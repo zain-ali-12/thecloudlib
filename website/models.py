@@ -6,10 +6,12 @@ user_subject = db.Table('user_subject',
     db.Column('user', db.Integer, db.ForeignKey('user.id'), primary_key=True),
     db.Column('subject', db.Integer, db.ForeignKey('subject.id'), primary_key=True)
 )
+
 subject_qualification = db.Table('subject_qualification',
     db.Column('qualification', db.Integer, db.ForeignKey('qualification.id'), primary_key=True),
     db.Column('subject', db.Integer, db.ForeignKey('subject.id'), primary_key=True)
 )
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -20,6 +22,7 @@ class User(db.Model, UserMixin):
     role = db.Column(db.String(100))
     posts = db.relationship('Post', backref='user', passive_deletes=True)
     subjects = db.relationship('Subject', secondary=user_subject,  backref='user')
+
 
 class Post(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -33,6 +36,7 @@ class Post(db.Model, UserMixin):
     subject = db.Column(db.Integer, db.ForeignKey('subject.id', ondelete="CASCADE"), nullable=False)
     author = db.Column(db.Integer, db.ForeignKey('user.id', ondelete="CASCADE"), nullable=False)
 
+
 class Feedback(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     likes = db.Column(db.Integer)
@@ -41,15 +45,13 @@ class Feedback(db.Model, UserMixin):
     post_id = db.Column(db.Integer, db.ForeignKey('post.id', ondelete="CASCADE"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete="CASCADE"), nullable=False)
 
+
 class Qualification(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     qualification = db.Column(db.String(20))
-    subjects = db.relationship("Subject", secondary=user_subject,  backref='user', passive_deletes=True)
-    
+
 
 class Subject(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     subject_name = db.Column(db.String(200), unique=True)
-    qualification = db.Column(db.Integer, db.ForeignKey('qualification.id', ondelete='CASCADE'), nullable=False)
     posts = db.relationship('Post', backref='Subject', passive_deletes=True)
-

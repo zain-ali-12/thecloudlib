@@ -37,14 +37,14 @@
                 {{user.username}}
             </div>
             <form action="/feedback" method="POST" class="feedback-form">
-                <label for="range">Rate this material</label>
+                <label for="rating">Rate this material</label>
                 <input type="range" name="rating" id="rating">
                 <label for="comment">Comment on this material</label>
                 <input type="text" name="comment" id="comment">
                 <label for="save">Save this material for later</label>
-                <input type="submit" value="Save" name="save">
+                <input type="submit" value="Save" id="save" name="save">
                 <label for="share">Share this material with others</label>
-                <input type="submit" value="Share" name="share">
+                <input type="submit" value="Share" id="share" name="share">
             </form>
         </div>
     </div>
