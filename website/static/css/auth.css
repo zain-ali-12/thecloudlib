@@ -1,0 +1,137 @@
+root {
+    --dark: #424447;
+    --orange:  #dd7f51;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url("/static/media/backgrounds/background.jpg");
+    background-position: center;
+    background-size: cover;
+    scroll-behavior: smooth;
+    
+}
+
+.form_container{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 3rem 2rem 3rem;
+    align-items: center;
+    justify-content: center;
+    background-color: #222126;
+    width: 30vw;
+    border-radius: 1.5rem;
+    box-shadow: 0px 0px 3rem #1b1b1b;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    width: 80%;
+}
+
+.form_container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_container > * {
+    color: #e0e0e0;
+}
+
+.form_container form label {
+    margin: 0px;
+}
+
+.extra_options {
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    text-align: center;
+    width: 60%;
+}
+
+.extra_options p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #dd7f51;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #d4c5be;
+}
+
+input {
+    padding: 0.75rem 1rem ;
+    margin: 0.5rem 0rem;
+    margin-bottom: 2rem;
+    width: 25vw;
+    border: none;
+    font-size: 1rem;
+    color: white;
+    /* background-color: #424447; */
+    background-color: #222126;
+    border-bottom: 0.1rem solid #dd7f51;
+    text-align: center;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+input:focus-visible {
+    border-bottom: 0.3rem solid #dd7f51;
+    outline: none;
+    margin-top: 0.3rem;
+    text-align: center;
+}
+
+#email {
+    background-image: url("/static/media/icons/email.png");
+}
+#username {
+    background-image: url("/static/media/icons/username.png");
+}
+#password {
+    background-image: url("/static/media/icons/password.png");
+}
+
+#username, #password, #email{
+    background-size: 4vh;
+    background-position: left center;
+    background-repeat: no-repeat;  
+    background-blend-mode: screen;  
+    padding-left: 5vh;
+}
+
+#submit {
+    width: auto;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    color: white;
+    background-color: #424447;
+    border: 0.1rem solid #dd7f51;
+    border-radius: 1.5rem;
+}
+
+#submit:hover{
+    box-shadow: 0rem 0rem 2rem #dd7f51;
+    background-color: #dd7f51;
+    cursor: pointer;
+}
+label {
+    font-size: 1rem;
+    align-self: flex-start;
+}
+
+#pass_error {
+    color: rgb(255, 67, 67);
+}

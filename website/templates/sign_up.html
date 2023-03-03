@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css')}}">
+{% endblock %}
+{% block body %}
+<div class="form_container">
+    <h1>Sign up for The Cloudlib</h1>
+    <form action="/sign-up" method="post">
+        <label for="email">Email</label>
+        <input required type="email" name="email" id="email" placeholder="Enter Email">
+
+        <label for="username">Username</label>
+        <input required type="text" name="username" id="username" placeholder="Create a  username">
+
+        <label for="password">Password</label>
+        <input required type="password" name="password" id="password" placeholder="Create a password">
+
+        <label for="password2">Verify password</label>
+        <input required type="password" name="password2" id="password2" placeholder="Re-enter your password">
+        <p hidden id="pass_error">Passwords do not match</p>
+        <input type="submit" value="Sign up" id="submit">
+
+    </form>
+    {% from "macros.html" import flashed %}
+    {{ flashed() }}
+    <div class="extra_options">
+        <span>Already have an account?</span>
+        <a href="/sign-in">Sign in here</a>
+    </div>
+    <script>
+        document.getElementById("password").addEventListener("input", check_password())
+        function check_password(){
+            var password = document.getElementById("password").value;
+            console.log(password.length);
+        }
+
+        document.getElementById("password2").addEventListener("input", verify_password);
+        function verify_password() {
+            var original_pass = document.getElementById("password").value;
+            var verify_pass = document.getElementById("password2").value;
+            if (verify_pass != original_pass) {
+                document.getElementById("pass_error").removeAttribute("hidden");
+                document.getElementById("submit").setAttribute("disabled", "");
+            } else {
+                document.getElementById("pass_error").setAttribute("hidden", "");
+                document.getElementById("submit").removeAttribute("disabled")
+            }
+        }
+    </script>
+</div>
+{% endblock %}

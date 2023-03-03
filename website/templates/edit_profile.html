@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/edit_profile.css')}}">
+{% endblock %}
+{% block body %}
+<div class="form_container">
+    <h1>Sign up for The Cloudlib</h1>
+    <form action="/edit-profile" method="post">
+        <label for="email"></label>
+        <input required type="email" name="email" id="email" placeholder="Enter Email">
+        {{user.posts[0]}}
+        {{subjects}}
+
+        <label for="username">Username</label>
+        <input required type="text" name="username" id="username" placeholder="Create a  username">
+
+        <label for="password">Password</label>
+        <input required type="password" name="password" id="password" placeholder="Create a password">
+
+        <label for="password2">Verify password</label>
+        <input required type="password" name="password2" id="password2" placeholder="Re-enter your password">
+        <p hidden id="pass_error">Passwords do not match</p>
+        <input type="submit" value="Sign up" id="submit">
+
+    </form>
+    {% from "macros.html" import flashed %}
+    {{ flashed() }}
+</div>
+{% endblock %}

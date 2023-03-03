@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css')}}">
+{% endblock %}
+{% block body %}
+<div class="form_container">
+    <h1>Sign in to The Coloudlib</h1>
+    <form action="/sign-in" method="post">
+        <label for="email">Email</label>
+        <input required type="email" name="email" id="email" placeholder="Enter Email">
+
+        <label for="password">Password</label>
+        <input required type="password" name="password" id="password" placeholder="Enter Password">
+        {% from "macros.html" import flashed %}
+        {{ flashed() }}
+
+        <div class="extra_options">
+            <span>Did you <a href="/forgot">Forgot Password</a>?</span>
+        </div>
+        <input type="submit" value="Sign in" id="submit">
+
+    </form>
+    <div class="extra_options">
+        <span>Don't have an account yet?</span>
+        <a href="/sign-up">Sign up here</a>
+    </div>
+</div>
+{% endblock %}

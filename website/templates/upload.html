@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css')}}">
+{% endblock %}
+
+{% block body %}
+{% from "macros.html" import navbar %}
+{{ navbar(user) }}
+
+
+<div id="options_container">
+    {% from 'macros.html' import options_container %}
+    {{options_container()}}
+    <div class="options" id="resource_types">
+        <button class="close_options" onclick="close_option('qualifications')">🗙</button>
+        <div id="scroll_text">scroll for more options</div>
+        <div class="subs_opts_cont">
+            <div class="option" id="PPT">Powerpoint Presentation</div>
+            <div class="option" id="written_notes">Written Notes</div>
+            <div class="option" id="typed_notes">Typed Notes</div>
+            <div class="option" id="mind_map">Mind Map</div>
+            <div class="option" id="past_paper">Past Paper</div>
+            <div class="option" id="solved_past_paper">Solved Past Paper</div>
+            <div class="option" id="marking_scheme">Marking Scheme</div>
+            <div class="option" id="other">Other</div>
+        </div>
+    </div>
+</div>
+
+<div class="form_container">
+    
+    <div class="forsubject">
+        <label for="none">Qualification</label>
+        <button class="choice" onclick="display_options('qualifications')" id="qualifications_choice"> Choose
+            Qualification</button>
+        <label for="none">Subject</label>
+        <button class="choice" onclick="display_options('subjects')" id="subjects_choice">Select a subject</button>
+        <button class="choice" onclick="display_options('resource_types')" id="resource_types_choice">Choose resource
+            type</button>
+    </div>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="topic">Topic</label>
+        <input required type="text" name="topic" placeholder="Enter topic name here">
+        <label for="title">Title</label>
+        <input required type="text" name="title" placeholder="Give your post a Title">
+        <input required type="file" id="file" name="file">
+        <button type="submit" id="submit">Upload file</button>
+
+        <!-- FOR CHOICES -->
+        <input required hidden type="text" name="qualification" id="qualification">
+        <input required hidden type="text" name="subject" id="subject">
+        <input required hidden type="text" name="resource_type" id="resource_type">
+        <!-- END OF CHOICES -->
+
+        <!-- <input type="submit" > -->
+    </form>
+</div>
+{% from "macros.html" import flashed %}
+{{ flashed() }}
+
+<script src="{{url_for('static',filename='js/upload.js')}}"></script>
+<script src="{{url_for('static',filename='js/chooseSubject.js')}}"></script>
+{% endblock %}

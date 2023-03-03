@@ -1,0 +1,607 @@
+{% macro navbar(user) %}
+<nav class="navbar">
+    <div id="navbar_logo">
+        <img src="{{url_for('static', filename='/media/logos/logo_light_long_transparent.png')}}" alt="">
+    </div>
+    <div id="navbar_tools">
+        <div id="navbar_browser">
+            <a href="/dashboard" class="navbar_link">Dashboard</a>
+            <a href="/home" class="navbar_link">Home</a>
+            <a href="/browse" class="navbar_link">Browse</a>
+            <a href="/upload" class="navbar_link">Upload</a>
+        </div>
+        {% if user.is_authenticated %}
+        <div id="navbar_profile">
+            <div id="img_container">
+                <img src="{{url_for('static', filename='/media/content/profile_pictures/base_profile.png')}}"
+                    alt="profile picture">
+            </div>
+            <div class="navbar_link">
+                {{user.username}}
+            </div>
+        </div>
+        {% endif %}
+        <div id="navbar_options">
+            {% if not user.is_authenticated %}
+            <a href="/sign-up" class="navbar_link">Sign-Up</a>
+            <a href="/sign-in" class="navbar_link">Sign-In</a>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <a href="/logout" class="navbar_link">Logout</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+{% if user.is_authenticated %}
+<div id="profile-popup-container">
+    <div id="user_profile">
+        <a href='/edit-profile' id="profile_pic">
+            <img src="{{url_for('static', filename='/media/content/profile_pictures/base_profile.png')}}"
+                alt="profile picture">
+        </a>
+        <div id="popup_username">
+            {{ user.username }}
+        </div>
+        <!-- <a href="/profile" class="navbar_link">✎</a> -->
+        <div class="profile_content">
+            <div class="member_since">
+                <span>Member Since:</span>
+                {{ user.date_created.strftime('%d %B %Y') }}
+            </div>
+            <hr>
+            <div class="posts_info">
+                <span>Posts:</span>
+                <a href="/view" class="profile_link navbar_link" title="View latest post by user">{{ user.posts|length
+                    }}</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<script src="{{url_for('static',filename='js/macros.js')}}"></script>
+{% endmacro %}
+
+{% macro flashed() %}
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% for category, message in messages %}
+<div class="flashed">{{message}}</div>
+{% endfor %}
+{% endwith %}
+<script src="{{url_for('static',filename='js/macros.js')}}"></script>
+{% endmacro %}
+
+{% macro preview_post(post_obj) %}
+
+{% endmacro %}
+
+{% macro options_container() %}
+<div class="options" id="qualifications">
+    <button class="close_options" onclick="close_option('qualifications')">🗙</button>
+    <div class="opts_cont">
+        <div class="option" id='IGCSE'>IGCSE</div>
+        <div class="option" id='AS-Level'>AS-Level</div>
+        <div class="option" id='A-Level'>A-Level</div>
+    </div>
+</div>
+<div class="options" id="subjects">
+    <button class="close_options" onclick="close_option('subjects')">🗙</button>
+    <div class="popup_info">
+        <div id="subject_text">Showing <span id="qualification_text">All</span> subjects</div>
+        <div id="scroll_text">scroll for more options</div>
+    </div>
+    <div class="subs_opts_cont">
+        <div class="option ig_subject" id='0985'>
+            <span class="option_text">Accounting (9-1)</span><span>0985</span>
+        </div>
+        <div class="option ig_subject" id='0452'>
+            <span class="option_text">Accounting</span><span>0452</span>
+        </div>
+        <div class="option ig_subject" id='0548'>
+            <span class="option_text">Afrikaans - Second Language</span><span>0548</span>
+        </div>
+        <div class="option ig_subject" id='0600'>
+            <span class="option_text">Agriculture</span><span>0600</span>
+        </div>
+        <div class="option ig_subject" id='7184'>
+            <span class="option_text">Arabic - First Language (9-1)</span><span>7184</span>
+        </div>
+        <div class="option ig_subject" id='0508'>
+            <span class="option_text">Arabic - First Language</span><span>0508</span>
+        </div>
+        <div class="option ig_subject" id='0544'>
+            <span class="option_text">Arabic - Foreign Language</span><span>0544</span>
+        </div>
+        <div class="option ig_subject" id='0989'>
+            <span class="option_text">Art & Design (9-1) 0989</span><span>0989</span>
+        </div>
+        <div class="option ig_subject" id='0400'>
+            <span class="option_text">Art & Design</span><span>0400</span>
+        </div>
+        <div class="option ig_subject" id='0538'>
+            <span class="option_text">Bahasa Indonesia</span><span>0538</span>
+        </div>
+        <div class="option ig_subject" id='0970'>
+            <span class="option_text">Biology (9-1)</span><span>0970</span>
+        </div>
+        <div class="option ig_subject" id='0610'>
+            <span class="option_text">Biology</span><span>0610</span>
+        </div>
+        <div class="option ig_subject" id='0986'>
+            <span class="option_text">Business Studies (9-1)</span><span>0986</span>
+        </div>
+        <div class="option ig_subject" id='0450'>
+            <span class="option_text">Business Studies</span><span>0450</span>
+        </div>
+        <div class="option ig_subject" id='0971'>
+            <span class="option_text">Chemistry (9-1)</span><span>0971</span>
+        </div>
+        <div class="option ig_subject" id='0620'>
+            <span class="option_text">Chemistry</span><span>0620</span>
+        </div>
+        <div class="option ig_subject" id='0547'>
+            <span class="option_text">Chinese (Mandarin) - Foreign Language (0547)</span><span>0547</span>
+        </div>
+        <div class="option ig_subject" id='0509'>
+            <span class="option_text">Chinese - First Language</span><span>0509</span>
+        </div>
+        <div class="option ig_subject" id='0523'>
+            <span class="option_text">Chinese - Second Language</span><span>0523</span>
+        </div>
+        <div class="option ig_subject" id='0984'>
+            <span class="option_text">Computer Science (9-1)</span><span>0984</span>
+        </div>
+        <div class="option ig_subject" id='0478'>
+            <span class="option_text">Computer Science</span><span>0478</span>
+        </div>
+        <div class="option ig_subject" id='0979'>
+            <span class="option_text">Design & Technology (9-1)</span><span>0979</span>
+        </div>
+        <div class="option ig_subject" id='0445'>
+            <span class="option_text">Design & Technology</span><span>0445</span>
+        </div>
+        <div class="option ig_subject" id='0994'>
+            <span class="option_text">Drama (9-1)</span><span>0994</span>
+        </div>
+        <div class="option ig_subject" id='0411'>
+            <span class="option_text">Drama</span><span>0411</span>
+        </div>
+        <div class="option ig_subject" id='0987'>
+            <span class="option_text">Economics (9-1)</span><span>0987</span>
+        </div>
+        <div class="option ig_subject" id='0455'>
+            <span class="option_text">Economics</span><span>0455</span>
+        </div>
+        <div class="option ig_subject" id='0465'>
+            <span class="option_text">English (Core) as a Second Language (Egypt)</span><span>0465</span>
+        </div>
+        <div class="option ig_subject" id='0772'>
+            <span class="option_text">English (as an Additional Language) (9-1) New</span><span>0772</span>
+        </div>
+        <div class="option ig_subject" id='0472'>
+            <span class="option_text">English (as an Additional Language) New</span><span>0472</span>
+        </div>
+        <div class="option ig_subject" id='0990'>
+            <span class="option_text">English - First Language (9-1)</span><span>0990</span>
+        </div>
+        <div class="option ig_subject" id='0524'>
+            <span class="option_text">English - First Language (US)</span><span>0524</span>
+        </div>
+        <div class="option ig_subject" id='0500'>
+            <span class="option_text">English - First Language</span><span>0500</span>
+        </div>
+        <div class="option ig_subject" id='0991'>
+            <span class="option_text">English as a Second Language (Count-in Speaking) (9-1)
+                (0991)</span><span>0991</span>
+        </div>
+        <div class="option ig_subject" id='0511'>
+            <span class="option_text">English as a Second Language (Count-in speaking) (0511)</span><span>0511</span>
+        </div>
+        <div class="option ig_subject" id='0993'>
+            <span class="option_text">English as a Second Language (Speaking Endorsement) (9-1)</span><span>0993</span>
+        </div>
+        <div class="option ig_subject" id='0510'>
+            <span class="option_text">English as a Second Language (Speaking endorsement)</span><span>0510</span>
+        </div>
+        <div class="option ig_subject" id='0427'>
+            <span class="option_text">English – Literature (US) – 0427</span><span>0427</span>
+        </div>
+        <div class="option ig_subject" id='0992'>
+            <span class="option_text">English – Literature in English (9-1) – 0992</span><span>0992</span>
+        </div>
+        <div class="option ig_subject" id='0475'>
+            <span class="option_text">English – Literature in English – 0475</span><span>0475</span>
+        </div>
+        <div class="option ig_subject" id='0454'>
+            <span class="option_text">Enterprise</span><span>0454</span>
+        </div>
+        <div class="option ig_subject" id='0680'>
+            <span class="option_text">Environmental Management</span><span>0680</span>
+        </div>
+        <div class="option ig_subject" id='0648'>
+            <span class="option_text">Food & Nutrition</span><span>0648</span>
+        </div>
+        <div class="option ig_subject" id='7156'>
+            <span class="option_text">French (9-1)</span><span>7156</span>
+        </div>
+        <div class="option ig_subject" id='0501'>
+            <span class="option_text">French - First Language</span><span>0501</span>
+        </div>
+        <div class="option ig_subject" id='0520'>
+            <span class="option_text">French - Foreign Language</span><span>0520</span>
+        </div>
+        <div class="option ig_subject" id='0976'>
+            <span class="option_text">Geography (9-1)</span><span>0976</span>
+        </div>
+        <div class="option ig_subject" id='0460'>
+            <span class="option_text">Geography</span><span>0460</span>
+        </div>
+        <div class="option ig_subject" id='7159'>
+            <span class="option_text">German (9-1)</span><span>7159</span>
+        </div>
+        <div class="option ig_subject" id='0505'>
+            <span class="option_text">German - First Language</span><span>0505</span>
+        </div>
+        <div class="option ig_subject" id='0525'>
+            <span class="option_text">German - Foreign Language</span><span>0525</span>
+        </div>
+        <div class="option ig_subject" id='0457'>
+            <span class="option_text">Global Perspectives</span><span>0457</span>
+        </div>
+        <div class="option ig_subject" id='0549'>
+            <span class="option_text">Hindi as a Second Language</span><span>0549</span>
+        </div>
+        <div class="option ig_subject" id='0977'>
+            <span class="option_text">History (9-1)</span><span>0977</span>
+        </div>
+        <div class="option ig_subject" id='0470'>
+            <span class="option_text">History</span><span>0470</span>
+        </div>
+        <div class="option ig_subject" id='0409'>
+            <span class="option_text">History - American (US)</span><span>0409</span>
+        </div>
+        <div class="option ig_subject" id='0983'>
+            <span class="option_text">Information and Communication Technology (9-1)</span><span>0983</span>
+        </div>
+        <div class="option ig_subject" id='0417'>
+            <span class="option_text">Information and Communication Technology</span><span>0417</span>
+        </div>
+        <div class="option ig_subject" id='0531'>
+            <span class="option_text">IsiZulu as a Second Language</span><span>0531</span>
+        </div>
+        <div class="option ig_subject" id='0493'>
+            <span class="option_text">Islamiyat</span><span>0493</span>
+        </div>
+        <div class="option ig_subject" id='7164'>
+            <span class="option_text">Italian (9-1)</span><span>7164</span>
+        </div>
+        <div class="option ig_subject" id='0535'>
+            <span class="option_text">Italian - Foreign Language</span><span>0535</span>
+        </div>
+        <div class="option ig_subject" id='0480'>
+            <span class="option_text">Latin</span><span>0480</span>
+        </div>
+        <div class="option ig_subject" id='0696'>
+            <span class="option_text">Malay - First Language</span><span>0696</span>
+        </div>
+        <div class="option ig_subject" id='0546'>
+            <span class="option_text">Malay - Foreign Language</span><span>0546</span>
+        </div>
+        <div class="option ig_subject" id='0697'>
+            <span class="option_text">Marine Science New</span><span>0697</span>
+        </div>
+        <div class="option ig_subject" id='0980'>
+            <span class="option_text">Mathematics (9-1)</span><span>0980</span>
+        </div>
+        <div class="option ig_subject" id='0444'>
+            <span class="option_text">Mathematics (US)</span><span>0444</span>
+        </div>
+        <div class="option ig_subject" id='0580'>
+            <span class="option_text">Mathematics</span><span>0580</span>
+        </div>
+        <div class="option ig_subject" id='0606'>
+            <span class="option_text">Mathematics - Additional</span><span>0606</span>
+        </div>
+        <div class="option ig_subject" id='0607'>
+            <span class="option_text">Mathematics - International</span><span>0607</span>
+        </div>
+        <div class="option ig_subject" id='0978'>
+            <span class="option_text">Music (9-1)</span><span>0978</span>
+        </div>
+        <div class="option ig_subject" id='0410'>
+            <span class="option_text">Music</span><span>0410</span>
+        </div>
+        <div class="option ig_subject" id='0448'>
+            <span class="option_text">Pakistan Studies</span><span>0448</span>
+        </div>
+        <div class="option ig_subject" id='0995'>
+            <span class="option_text">Physical Education (9-1)</span><span>0995</span>
+        </div>
+        <div class="option ig_subject" id='0413'>
+            <span class="option_text">Physical Education</span><span>0413</span>
+        </div>
+        <div class="option ig_subject" id='0652'>
+            <span class="option_text">Physical Science</span><span>0652</span>
+        </div>
+        <div class="option ig_subject" id='0972'>
+            <span class="option_text">Physics (9-1)</span><span>0972</span>
+        </div>
+        <div class="option ig_subject" id='0625'>
+            <span class="option_text">Physics</span><span>0625</span>
+        </div>
+        <div class="option ig_subject" id='0504'>
+            <span class="option_text">Portuguese - First Language</span><span>0504</span>
+        </div>
+        <div class="option ig_subject" id='0490'>
+            <span class="option_text">Religious Studies</span><span>0490</span>
+        </div>
+        <div class="option ig_subject" id='0499'>
+            <span class="option_text">Sanskrit</span><span>0499</span>
+        </div>
+        <div class="option ig_subject" id='0653'>
+            <span class="option_text">Science - Combined</span><span>0653</span>
+        </div>
+        <div class="option ig_subject" id='0973'>
+            <span class="option_text">Sciences - Co-ordinated (9-1)</span><span>0973</span>
+        </div>
+        <div class="option ig_subject" id='0654'>
+            <span class="option_text">Sciences - Co-ordinated (Double)</span><span>0654</span>
+        </div>
+        <div class="option ig_subject" id='0698'>
+            <span class="option_text">Setswana</span><span>0698</span>
+        </div>
+        <div class="option ig_subject" id='0495'>
+            <span class="option_text">Sociology</span><span>0495</span>
+        </div>
+        <div class="option ig_subject" id='7160'>
+            <span class="option_text">Spanish (9-1)</span><span>7160</span>
+        </div>
+        <div class="option ig_subject" id='0502'>
+            <span class="option_text">Spanish - First Language</span><span>0502</span>
+        </div>
+        <div class="option ig_subject" id='0530'>
+            <span class="option_text">Spanish - Foreign Language</span><span>0530</span>
+        </div>
+        <div class="option ig_subject" id='0488'>
+            <span class="option_text">Spanish - Literature</span><span>0488</span>
+        </div>
+        <div class="option ig_subject" id='0474'>
+            <span class="option_text">Spanish - Literature in Spanish</span><span>0474</span>
+        </div>
+        <div class="option ig_subject" id='0262'>
+            <span class="option_text">Swahili</span><span>0262</span>
+        </div>
+        <div class="option ig_subject" id='0518'>
+            <span class="option_text">Thai - First Language</span><span>0518</span>
+        </div>
+        <div class="option ig_subject" id='0471'>
+            <span class="option_text">Travel & Tourism</span><span>0471</span>
+        </div>
+        <div class="option ig_subject" id='0513'>
+            <span class="option_text">Turkish - First Language</span><span>0513</span>
+        </div>
+        <div class="option ig_subject" id='0539'>
+            <span class="option_text">Urdu as a Second Language</span><span>0539</span>
+        </div>
+        <div class="option ig_subject" id='0408'>
+            <span class="option_text">World Literature</span><span>0408</span>
+        </div>
+        <div class="option al_subject " id='9706'>
+            <span class="option_text">Accounting</span><span>9706</span>
+        </div>
+        <div class="option al_subject " id='9679'>
+            <span class="option_text">Afrikaans</span><span>9679</span>
+        </div>
+        <div class="option al_subject as_only" id='8679'>
+            <span class="option_text">Afrikaans - Language (AS Level only)</span><span>8679</span>
+        </div>
+        <div class="option al_subject " id='9680'>
+            <span class="option_text">Arabic</span><span>9680</span>
+        </div>
+        <div class="option al_subject as_only" id='8680'>
+            <span class="option_text">Arabic - Language (AS Level only)</span><span>8680</span>
+        </div>
+        <div class="option al_subject " id='9479'>
+            <span class="option_text">Art & Design</span><span>9479</span>
+        </div>
+        <div class="option al_subject " id='9484'>
+            <span class="option_text">Biblical Studies (9484) New</span><span>9484</span>
+        </div>
+        <div class="option al_subject " id='9700'>
+            <span class="option_text">Biology</span><span>9700</span>
+        </div>
+        <div class="option al_subject " id='9609'>
+            <span class="option_text">Business (9609)</span><span>9609</span>
+        </div>
+        <div class="option al_subject " id='9701'>
+            <span class="option_text">Chemistry</span><span>9701</span>
+        </div>
+        <div class="option al_subject al_only" id='9715'>
+            <span class="option_text">Chinese (A Level only)</span><span>9715</span>
+        </div>
+        <div class="option al_subject al_only" id='9868'>
+            <span class="option_text">Chinese - Language & Literature (A Level only) New</span><span>9868</span>
+        </div>
+        <div class="option al_subject as_only" id='8681'>
+            <span class="option_text">Chinese - Language (AS Level only)</span><span>8681</span>
+        </div>
+        <div class="option al_subject as_only" id='8238'>
+            <span class="option_text">Chinese Language (AS Level) New</span><span>8238</span>
+        </div>
+        <div class="option al_subject " id='9274'>
+            <span class="option_text">Classical Studies</span><span>9274</span>
+        </div>
+        <div class="option al_subject " id='9618'>
+            <span class="option_text">Computer Science</span><span>9618</span>
+        </div>
+        <div class="option al_subject " id='9705'>
+            <span class="option_text">Design & Technology</span><span>9705</span>
+        </div>
+        <div class="option al_subject " id='9631'>
+            <span class="option_text">Design & Textiles</span><span>9631</span>
+        </div>
+        <div class="option al_subject " id='9481'>
+            <span class="option_text">Digital Media & Design</span><span>9481</span>
+        </div>
+        <div class="option al_subject al_only" id='9011'>
+            <span class="option_text">Divinity (A Level only)</span><span>9011</span>
+        </div>
+        <div class="option al_subject as_only" id='8041'>
+            <span class="option_text">Divinity (AS Level only)</span><span>8041</span>
+        </div>
+        <div class="option al_subject " id='9482'>
+            <span class="option_text">Drama</span><span>9482</span>
+        </div>
+        <div class="option al_subject " id='9708'>
+            <span class="option_text">Economics</span><span>9708</span>
+        </div>
+        <div class="option al_subject as_only" id='8695'>
+            <span class="option_text">English - Language and Literature (AS Level only)</span><span>8695</span>
+        </div>
+        <div class="option al_subject " id='9695'>
+            <span class="option_text">English - Literature</span><span>9695</span>
+        </div>
+        <div class="option al_subject as_only" id='8021'>
+            <span class="option_text">English General Paper (AS Level only)</span><span>8021</span>
+        </div>
+        <div class="option al_subject " id='9093'>
+            <span class="option_text">English Language</span><span>9093</span>
+        </div>
+        <div class="option al_subject as_only" id='8291'>
+            <span class="option_text">Environmental Management (AS only)</span><span>8291</span>
+        </div>
+        <div class="option al_subject al_only" id='9716'>
+            <span class="option_text">French (A Level only)</span><span>9716</span>
+        </div>
+        <div class="option al_subject as_only" id='8682'>
+            <span class="option_text">French - Language (AS Level only)</span><span>8682</span>
+        </div>
+        <div class="option al_subject " id='9898'>
+            <span class="option_text">French Language & Literature</span><span>9898</span>
+        </div>
+        <div class="option al_subject as_only" id='8028'>
+            <span class="option_text">French Language (AS Level)</span><span>8028</span>
+        </div>
+        <div class="option al_subject " id='9696'>
+            <span class="option_text">Geography</span><span>9696</span>
+        </div>
+        <div class="option al_subject al_only" id='9717'>
+            <span class="option_text">German (A Level only)</span><span>9717</span>
+        </div>
+        <div class="option al_subject " id='9897'>
+            <span class="option_text">German</span><span>9897</span>
+        </div>
+        <div class="option al_subject as_only" id='8683'>
+            <span class="option_text">German - Language (AS Level only)</span><span>8683</span>
+        </div>
+        <div class="option al_subject as_only" id='8027'>
+            <span class="option_text">German - Language (AS Level)</span><span>8027</span>
+        </div>
+        <div class="option al_subject " id='9239'>
+            <span class="option_text">Global Perspectives & Research</span><span>9239</span>
+        </div>
+        <div class="option al_subject al_only" id='9687'>
+            <span class="option_text">Hindi (A Level only)</span><span>9687</span>
+        </div>
+        <div class="option al_subject as_only" id='8687'>
+            <span class="option_text">Hindi - Language (AS Level only)</span><span>8687</span>
+        </div>
+        <div class="option al_subject as_only" id='8675'>
+            <span class="option_text">Hindi - Literature (AS Level only)</span><span>8675</span>
+        </div>
+        <div class="option al_subject " id='9487'>
+            <span class="option_text">Hinduism</span><span>9487</span>
+        </div>
+        <div class="option al_subject " id='9489'>
+            <span class="option_text">History</span><span>9489</span>
+        </div>
+        <div class="option al_subject " id='9626'>
+            <span class="option_text">Information Technology</span><span>9626</span>
+        </div>
+        <div class="option al_subject " id='9488'>
+            <span class="option_text">Islamic Studies</span><span>9488</span>
+        </div>
+        <div class="option al_subject as_only" id='8281'>
+            <span class="option_text">Japanese Language (AS Level only)</span><span>8281</span>
+        </div>
+        <div class="option al_subject " id='9084'>
+            <span class="option_text">Law</span><span>9084</span>
+        </div>
+        <div class="option al_subject " id='9693'>
+            <span class="option_text">Marine Science</span><span>9693</span>
+        </div>
+        <div class="option al_subject " id='9709'>
+            <span class="option_text">Mathematics</span><span>9709</span>
+        </div>
+        <div class="option al_subject " id='9231'>
+            <span class="option_text">Mathematics - Further</span><span>9231</span>
+        </div>
+        <div class="option al_subject " id='9607'>
+            <span class="option_text">Media Studies</span><span>9607</span>
+        </div>
+        <div class="option al_subject " id='9483'>
+            <span class="option_text">Music</span><span>9483</span>
+        </div>
+        <div class="option al_subject " id='9396'>
+            <span class="option_text">Physical Education</span><span>9396</span>
+        </div>
+        <div class="option al_subject " id='9702'>
+            <span class="option_text">Physics</span><span>9702</span>
+        </div>
+        <div class="option al_subject al_only" id='9718'>
+            <span class="option_text">Portuguese (A Level only)</span><span>9718</span>
+        </div>
+        <div class="option al_subject as_only" id='8684'>
+            <span class="option_text">Portuguese - Language (AS Level only)</span><span>8684</span>
+        </div>
+        <div class="option al_subject " id='9990'>
+            <span class="option_text">Psychology</span><span>9990</span>
+        </div>
+        <div class="option al_subject " id='9699'>
+            <span class="option_text">Sociology</span><span>9699</span>
+        </div>
+        <div class="option al_subject al_only" id='9719'>
+            <span class="option_text">Spanish (A Level only)</span><span>9719</span>
+        </div>
+        <div class="option al_subject as_only" id='8665'>
+            <span class="option_text">Spanish - First Language (AS Level only)</span><span>8665</span>
+        </div>
+        <div class="option al_subject al_only" id='9844'>
+            <span class="option_text">Spanish - Language & Literature (A Level only) New</span><span>9844</span>
+        </div>
+        <div class="option al_subject as_only" id='8685'>
+            <span class="option_text">Spanish - Language (AS Level only)</span><span>8685</span>
+        </div>
+        <div class="option al_subject as_only" id='8673'>
+            <span class="option_text">Spanish - Literature (AS Level only)</span><span>8673</span>
+        </div>
+        <div class="option al_subject as_only" id='8022'>
+            <span class="option_text">Spanish Language (AS Level) New</span><span>8022</span>
+        </div>
+        <div class="option al_subject as_only" id='8386'>
+            <span class="option_text">Sport & Physical Education (AS Level only) (8386) New</span><span>8386</span>
+        </div>
+        <div class="option al_subject " id='9689'>
+            <span class="option_text">Tamil</span><span>9689</span>
+        </div>
+        <div class="option al_subject " id='8689'>
+            <span class="option_text">Tamil - Language</span><span>8689</span>
+        </div>
+        <div class="option al_subject " id='9694'>
+            <span class="option_text">Thinking Skills</span><span>9694</span>
+        </div>
+        <div class="option al_subject " id='9395'>
+            <span class="option_text">Travel & Tourism</span><span>9395</span>
+        </div>
+        <div class="option al_subject al_only" id='9676'>
+            <span class="option_text">Urdu (A Level only)</span><span>9676</span>
+        </div>
+        <div class="option al_subject as_only" id='8686'>
+            <span class="option_text">Urdu - Language (AS Level only)</span><span>8686</span>
+        </div>
+        <div class="option al_subject al_only" id='9686'>
+            <span class="option_text">Urdu - Pakistan only (A Level only)</span><span>9686</span>
+        </div>
+    </div>
+</div>
+
+{% endmacro %}

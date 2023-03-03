@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/browse.css')}}">
+{% endblock %}
+{% block body %}
+    {% from 'macros.html' import navbar %}
+    {{ navbar(user) }}
+
+    {% from 'macros.html' import preview_post %}
+    <div class="posts_container">
+        {% for post_obj in user.posts %}
+            {{ preview_post(post_obj) }}
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block body %}
+
+    {% from "macros.html" import navbar %}
+    {{ navbar(user) }}
+
+    {% from 'macros.html' import flashed %}
+    {{ flashed() }}
+    
+    <div id="user_profile_container">
+        <img src="{{image_source}}" alt="" id="profile_picture">
+        <div id="username">{{username}}</div>
+        <div id="member_since">{{member_since}}</div>
+        <div id="likes">1 like</div>
+        <div id="rating">5 stars</div>
+    </div>
+    <div id="material_container">
+        <div id="my_notes">My notes</div>
+        <div id="saved_notes">Saved Notes</div>
+        <div id="shared_notes">Shared Notes</div>
+    </div>
+{% endblock %}

@@ -1,0 +1,125 @@
+.navbar {
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222126;
+    background-color: transparent;
+    /* border-radius: 1.5rem; */
+}
+
+#navbar_logo,
+#navbar_logo img {
+    height: 8.5vh;
+}
+
+#navbar_tools {
+    display: flex;
+    align-items: center;
+    padding-right: 1rem;
+}
+
+#navbar_options {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navbar_link {
+    color: #e0e0e0;
+    text-decoration: none;
+    padding: 0rem 0.5rem 0rem 0.5rem;
+    /* text-transform: uppercase; */
+    font-size: 1.5rem;
+    font-family: 'Alegreya SC';
+}
+
+.navbar_link:hover {
+    color: #dc9860;
+}
+
+#navbar_profile {
+    display: flex;
+    align-items: center;
+}
+
+#navbar_profile:hover {
+    cursor: pointer;
+    color: #dc9860;
+}
+
+#img_container {
+    max-height: 6vh;
+    width: 6vh;
+    border-radius: 29rem;
+    border-radius: 24rem;
+    overflow: hidden;
+    margin-left: 2vh;
+}
+
+#img_container img {
+    height: 6vh;
+}
+
+.flashed {
+    font-family: 'Bebas Neue';
+}
+
+#profile-popup-container {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 8;
+    display: none;
+}
+
+#user_profile {
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 5vw;
+    background: linear-gradient(#1d2224, #2d3436);
+    box-shadow: 0px 0.5rem 2rem #000000;
+    border-radius: 7.5rem 7.5rem 1rem 1rem;
+    width: 15vw;
+    color: #e0e0e0;
+    overflow: hidden;
+    align-items: center;
+}
+
+#profile_pic, #profile_pic img {
+    width: 15.5vw;
+    height: 15vw;
+}
+
+#profile_pic {
+    border-radius: 10vw;
+    overflow: hidden;
+}
+
+#popup_username {
+    font-size: 2rem;
+    font-weight: bold;
+    position: relative;
+    top: -2rem;
+    margin-bottom: -2rem;
+    border-radius: 2rem;
+    background: #00000050;
+    box-shadow: 0px 0px 2rem #000000c9;
+    filter: drop-shadow(0px 0px 2rem #000000e6);
+}
+
+.profile_content {
+    padding: 2vh;
+    border-radius: 1rem;
+    font-size: 1rem;
+}
+
+.profile_link {
+    font-size: 1rem;
+}
+
+.member_since {
+    font-size: 0.8rem;
+}

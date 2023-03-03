@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view.css') }}">
+{% endblock %}
+{% block body %}
+{% from 'macros.html' import navbar %}
+{{ navbar(user) }}
+{% set post = user.posts[0] %}
+<div class="post_container"> 
+    <div class="post">
+        <div class="aesthetic l">
+            <div class="one ll"></div>
+            <div class="two ll"></div>
+        </div>
+        <div class="aesthetic r">
+            <div class="one rr"></div>
+            <div class="two rr"></div>
+        </div>
+        <div class="get-feedback feedback">
+            <div class="post-topic">{{ post.title }}</div>
+            <div class="details">
+                {{post.qualification}}>
+                {{post.subject}}>
+                {{post.topic}}
+            </div>
+            <hr>
+            <div id="comments_container"> 
+                <h3 id="comments-heading">Comments</h3>
+                <div class="comments"></div>
+            </div>
+        </div>
+        <div class="post-content">
+            <iframe src="{{ url_for('static', filename='/media/content/posts/'+post.id|string+'.'+post.file_type)}}" frameborder="0"></iframe>
+        </div>
+        <div class="give-feedback feedback">
+            <div class="user_details">
+                {{user.username}}
+            </div>
+            <form action="/feedback" method="POST" class="feedback-form">
+                <label for="range">Rate this material</label>
+                <input type="range" name="rating" id="rating">
+                <label for="comment">Comment on this material</label>
+                <input type="text" name="comment" id="comment">
+                <label for="save">Save this material for later</label>
+                <input type="submit" value="Save" name="save">
+                <label for="share">Share this material with others</label>
+                <input type="submit" value="Share" name="share">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

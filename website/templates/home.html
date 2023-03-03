@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block head %}
+{% endblock %}
+{% block body %}
+{% from "macros.html" import navbar %}
+
+{{navbar(user)}}
+
+<div id="intro">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate tempore ducimus necessitatibus est
+    quae fugit, atque iure soluta animi unde quas aliquid! Necessitatibus, iure animi eaque optio quidem veniam omnis
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. In eligendi rerum voluptates. Architecto quasi pariatur
+    molestias. Fugiat ipsam commodi odit ex incidunt doloremque, totam ratione, deleniti ad tenetur nobis reiciendis.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, neque quia hic distinctio, quam sapiente
+    voluptas id dolores perspiciatis consectetur ipsum odit quae corporis magnam illo reiciendis. Dolores, provident a.
+</div>
+<div id="reviews">
+    <h4>review1</h4>
+    <div id="review1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis adipisci tempora nulla!
+        Accusamus totam quaerat voluptatum natus, similique quam deserunt. Atque quasi velit eius voluptatibus expedita!
+        Totam quae voluptatum nostrum?</div>
+    <h4>review2</h4>
+    <div id="review2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio vero officiis itaque quo
+        obcaecati! Molestias dignissimos quaerat corrupti minima rerum, magni in neque, perspiciatis quam sint nemo nam
+        nihil voluptatibus!</div>
+    <h4>review3</h4>
+    <div id="review3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse voluptates aliquam, quaerat dolorum
+        voluptatibus numquam ratione cumque pariatur, ipsa similique consequatur nisi dolor maxime, quo eveniet nostrum?
+        Excepturi, voluptate. Mollitia?</div>
+</div>
+
+{% endblock %}
