@@ -1,2 +1,0 @@
-from website.models import *
-        

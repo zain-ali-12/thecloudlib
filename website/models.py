@@ -4,12 +4,12 @@ from sqlalchemy import func
 
 user_subject = db.Table('user_subject',
     db.Column('user', db.Integer, db.ForeignKey('user.id'), primary_key=True),
-    db.Column('subject', db.Integer, db.ForeignKey('subject.id'), primary_key=True)
+    db.Column('subject', db.String(4), db.ForeignKey('subject.id'), primary_key=True)
 )
 
 subject_qualification = db.Table('subject_qualification',
-    db.Column('qualification', db.Integer, db.ForeignKey('qualification.id'), primary_key=True),
-    db.Column('subject', db.Integer, db.ForeignKey('subject.id'), primary_key=True)
+    db.Column('qualification', db.String(15), db.ForeignKey('qualification.id'), primary_key=True),
+    db.Column('subject', db.String(4), db.ForeignKey('subject.id'), primary_key=True)
 )
 
 
@@ -26,14 +26,13 @@ class User(db.Model, UserMixin):
 
 class Post(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    qualification = db.Column(db.String(200))
     resource_type = db.Column(db.String(200))
     topic = db.Column(db.String(200))
     title = db.Column(db.String(200))
     date_created = db.Column(db.DateTime(timezone=True), default=func.now())
     file_type = db.Column(db.String(10))
     feedback = db.relationship('Feedback', backref='post', passive_deletes=True)
-    subject = db.Column(db.Integer, db.ForeignKey('subject.id', ondelete="CASCADE"), nullable=False)
+    subject = db.Column(db.String(4), db.ForeignKey('subject.id', ondelete="CASCADE"), nullable=False)
     author = db.Column(db.Integer, db.ForeignKey('user.id', ondelete="CASCADE"), nullable=False)
 
 
@@ -47,11 +46,11 @@ class Feedback(db.Model, UserMixin):
 
 
 class Qualification(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    qualification = db.Column(db.String(20))
+    id = db.Column(db.String(15), primary_key=True)
 
 
 class Subject(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    subject_name = db.Column(db.String(200), unique=True)
+    id = db.Column(db.String(4), primary_key=True)
+    subject_name = db.Column(db.String(200))
     posts = db.relationship('Post', backref='Subject', passive_deletes=True)
+    qualifications = db.relationship('Qualification', secondary=subject_qualification, backref='Subject')

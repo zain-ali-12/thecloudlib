@@ -1,0 +1,170 @@
+subject_id,subject_name,qualification(s)
+9706,Accounting,AS-Level A-Level
+8679,Afrikaans - Language (AS Level only),AS-Level
+9680,Arabic,AS-Level A-Level
+8680,Arabic - Language (AS Level only),AS-Level
+9479,Art - Design,AS-Level A-Level
+9484,Biblical Studies,AS-Level A-Level
+9700,Biology,AS-Level A-Level
+9609,Business,AS-Level A-Level
+9701,Chemistry,AS-Level A-Level
+9868,Chinese - Language - Literature (A Level only),A-Level
+8681,Chinese - Language (AS Level only),AS-Level
+9715,Chinese (A Level only),A-Level
+8238,Chinese Language (AS Level),AS-Level A-Level
+9274,Classical Studies,AS-Level A-Level
+9618,Computer Science,AS-Level A-Level
+9705,Design - Technology,AS-Level A-Level
+9631,Design - Textiles,AS-Level A-Level
+9481,Digital Media - Design,AS-Level A-Level
+9011,Divinity (A Level only),A-Level
+8041,Divinity (AS Level only),AS-Level
+9482,Drama,AS-Level A-Level
+9708,Economics,AS-Level A-Level
+8695,English - Language and Literature (AS Level only),AS-Level
+9695,English - Literature,AS-Level A-Level
+8021,English General Paper (AS Level only),AS-Level
+9093,English Language,AS-Level A-Level
+8291,Environmental Management (AS only),AS-Level
+8682,French - Language (AS Level only),AS-Level
+9716,French (A Level only),A-Level
+9898,French Language - Literature,AS-Level A-Level
+8028,French Language (AS Level),AS-Level A-Level
+9696,Geography,AS-Level A-Level
+9897,German,AS-Level A-Level
+8683,German - Language (AS Level only),AS-Level
+8027,German - Language (AS Level),AS-Level A-Level
+9717,German (A Level only),A-Level
+9239,Global Perspectives - Research,AS-Level A-Level
+8687,Hindi - Language (AS Level only),AS-Level
+8675,Hindi - Literature (AS Level only),AS-Level
+9687,Hindi (A Level only),A-Level
+9487,Hinduism,AS-Level A-Level
+9489,History,AS-Level A-Level
+9626,Information Technology,AS-Level A-Level
+9488,Islamic Studies,AS-Level A-Level
+8281,Japanese Language (AS Level only),AS-Level
+9084,Law,AS-Level A-Level
+9693,Marine Science,AS-Level A-Level
+9709,Mathematics,AS-Level A-Level
+9231,Mathematics - Further,AS-Level A-Level
+9607,Media Studies,AS-Level A-Level
+9483,Music,AS-Level A-Level
+9396,Physical Education,AS-Level A-Level
+9702,Physics,AS-Level A-Level
+8684,Portuguese - Language (AS Level only),AS-Level
+9718,Portuguese (A Level only),A-Level
+9990,Psychology,AS-Level A-Level
+9699,Sociology,AS-Level A-Level
+8665,Spanish - First Language (AS Level only),AS-Level
+9844,Spanish - Language - Literature (A Level only),A-Level
+8685,Spanish - Language (AS Level only),AS-Level
+8673,Spanish - Literature (AS Level only),AS-Level
+9719,Spanish (A Level only),A-Level
+8022,Spanish Language (AS Level),AS-Level A-Level
+8386,Sport - Physical Education (AS Level only),AS-Level
+9689,Tamil,AS-Level A-Level
+8689,Tamil - Language,AS-Level A-Level
+9694,Thinking Skills,AS-Level A-Level
+9395,Travel - Tourism,AS-Level A-Level
+8686,Urdu - Language (AS Level only),AS-Level
+9686,Urdu - Pakistan only (A Level only),A-Level
+9676,Urdu (A Level only),A-Level
+0452,Accounting,IGCSE
+0985,Accounting (9-1),IGCSE
+0548,Afrikaans - Second Language,IGCSE
+0600,Agriculture,IGCSE
+0508,Arabic - First Language,IGCSE
+7184,Arabic - First Language (9-1),IGCSE
+0544,Arabic - Foreign Language,IGCSE
+0400,Art - Design,IGCSE
+0989,Art - Design (9-1),IGCSE
+0538,Bahasa Indonesia,IGCSE
+0610,Biology,IGCSE
+0970,Biology (9-1),IGCSE
+0450,Business Studies,IGCSE
+0986,Business Studies (9-1),IGCSE
+0620,Chemistry,IGCSE
+0971,Chemistry (9-1),IGCSE
+0509,Chinese - First Language,IGCSE
+0523,Chinese - Second Language,IGCSE
+0547,Chinese (Mandarin) - Foreign Language,IGCSE
+0478,Computer Science,IGCSE
+0984,Computer Science (9-1),IGCSE
+0445,Design - Technology,IGCSE
+0979,Design - Technology (9-1),IGCSE
+0411,Drama,IGCSE
+0994,Drama (9-1),IGCSE
+0455,Economics,IGCSE
+0987,Economics (9-1),IGCSE
+0500,English - First Language,IGCSE
+0990,English - First Language (9-1),IGCSE
+0524,English - First Language (US),IGCSE
+0427,English - Literature (US),IGCSE
+0475,English - Literature in English,IGCSE
+0992,English - Literature in English (9-1),IGCSE
+0472,English (as an Additional Language),IGCSE
+0772,English (as an Additional Language) (9-1),IGCSE
+0465,English (Core) as - Second Language (Egypt),IGCSE
+0511,English as - Second Language (Count-in speaking),IGCSE
+0991,English as - Second Language (Count-in Speaking) (9-1),IGCSE
+0510,English as - Second Language (Speaking endorsement),IGCSE
+0993,English as - Second Language (Speaking Endorsement) (9-1),IGCSE
+0454,Enterprise,IGCSE
+0680,Environmental Management,IGCSE
+0648,Food - Nutrition,IGCSE
+0501,French - First Language,IGCSE
+0520,French - Foreign Language,IGCSE
+7156,French (9-1),IGCSE
+0460,Geography,IGCSE
+0976,Geography (9-1),IGCSE
+0505,German - First Language,IGCSE
+0525,German - Foreign Language,IGCSE
+7159,German (9-1),IGCSE
+0457,Global Perspectives,IGCSE
+0549,Hindi as - Second Language,IGCSE
+0470,History,IGCSE
+0409,History - American (US),IGCSE
+0977,History (9-1),IGCSE
+0417,Information and Communication Technology,IGCSE
+0983,Information and Communication Technology (9-1),IGCSE
+0531,IsiZulu as - Second Language,IGCSE
+0493,Islamiyat,IGCSE
+0535,Italian - Foreign Language,IGCSE
+7164,Italian (9-1),IGCSE
+0480,Latin,IGCSE
+0696,Malay - First Language,IGCSE
+0546,Malay - Foreign Language,IGCSE
+0697,Marine Science,IGCSE
+0580,Mathematics,IGCSE
+0606,Mathematics - Additional,IGCSE
+0607,Mathematics - International,IGCSE
+0980,Mathematics (9-1),IGCSE
+0444,Mathematics (US),IGCSE
+0410,Music,IGCSE
+0978,Music (9-1),IGCSE
+0448,Pakistan Studies,IGCSE
+0413,Physical Education,IGCSE
+0995,Physical Education (9-1),IGCSE
+0652,Physical Science,IGCSE
+0625,Physics,IGCSE
+0972,Physics (9-1),IGCSE
+0504,Portuguese - First Language,IGCSE
+0490,Religious Studies,IGCSE
+0499,Sanskrit,IGCSE
+0653,Science - Combined,IGCSE
+0973,Sciences - Co-ordinated (9-1),IGCSE
+0654,Sciences - Co-ordinated (Double),IGCSE
+0698,Setswana,IGCSE
+0495,Sociology,IGCSE
+0502,Spanish - First Language,IGCSE
+0530,Spanish - Foreign Language,IGCSE
+0488,Spanish - Literature,IGCSE
+0474,Spanish - Literature in Spanish,IGCSE
+7160,Spanish (9-1),IGCSE
+0262,Swahili,IGCSE
+0518,Thai - First Language,IGCSE
+0471,Travel - Tourism,IGCSE
+0513,Turkish - First Language,IGCSE
+0539,Urdu as - Second Language,IGCSE
+0408,World Literature,IGCSE

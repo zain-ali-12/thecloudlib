@@ -6,6 +6,7 @@ from flask_login import LoginManager
 db = SQLAlchemy()
 DB_NAME = 'database.db'
 
+
 def create_app():
     app = Flask(__name__)
     app.config["SECRET_KEY"] = "w-wH&nfO@@2D0Hd4)!q(A)xnvA7-jV*$p*k625$T@eu76Ts6cEQXu-@uq32y2O00iCfX)"
@@ -33,11 +34,39 @@ def create_app():
     def load_user(id):
         return User.query.get(int(id))
 
-
     return app
 
+
 def create_database(app):
-    if not path.exists(f"website/{DB_NAME}"):
+    if not path.exists(f"instance/{DB_NAME}"):
         with app.app_context():
             db.create_all()
+            update_qualifications(app, db)
+            update_subjects(app, db)
+            # from .init_db import update_qualifications
+            # update_qualifications(app, db)
         print("created database")
+
+
+def update_qualifications(app, db):
+    from .models import Qualification
+    quals = ['IGCSE', "AS-Level", "A-Level"]
+    with app.app_context():
+        for i in quals:
+            db.session.add(Qualification(id=i))
+            db.session.commit()
+
+
+def update_subjects(app, db):
+    from .models import Subject, Qualification
+    with open('subs.csv', 'r') as f:
+        csv_data = [data[:-1] for data in f.readlines()][1:]
+        for data in csv_data:
+            subject_id, subject_name, qualification = data.split(",")
+            new_subject = Subject(id=subject_id, subject_name=subject_name)
+            # with app.app_context():
+            db.session.add(new_subject)
+            db.session.commit()
+            for qual in qualification.split(" "):
+                new_subject.qualifications.append(Qualification.query.filter_by(id=qual).first())
+                db.session.commit()
