@@ -49,10 +49,18 @@
                 {{ user.date_created.strftime('%d %B %Y') }}
             </div>
             <hr>
+            <div class="role_info">
+                {% set role = user.role %}
+                {% if role != None %}
+                {{ role }}
+                {% else %}
+                <span>Teacher/Student</span><a href='/edit-profile' class="profile_link navbar_link">Complete Profile</a>
+                {% endif %}
+            </div>
             <div class="posts_info">
                 <span>Posts:</span>
-                <a href="/view" class="profile_link navbar_link" title="View latest post by user">{{ user.posts|length
-                    }}</a>
+                {% set num_posts = user.posts|length %}
+                <a href="/view" class="profile_link navbar_link" title="View latest post by user">{{ num_posts }} {% if num_posts == 1 %}post{% else %}posts{% endif %}</a>
             </div>
         </div>
     </div>

@@ -12,10 +12,10 @@ def signin():
     if request.method == "GET":
         return render_template("sign_in.html")
     elif request.method == "POST":
-        email = request.form.get("email")
+        email = request.form.get("email").lower()
         password = request.form.get("password")
         user = User.query.filter_by(email=email).first()
-        if user != None:
+        if user is not None:
             if check_password_hash(user.password, password):
                 login_user(user, remember=True)
                 flash("Logged in!")
@@ -31,6 +31,7 @@ def signin():
 @auth.route("/forgot", methods=["GET", "POST"])
 def forgot_password():
     return render_template("forgot_password.html")
+
 
 @auth.route("/sign-up", methods=["GET", "POST"])
 def signup():
@@ -55,6 +56,7 @@ def signup():
             return redirect(url_for("views.dashboard", user=new_user))
         return render_template("sign_up.html")
 
+
 @auth.route("/edit-profile", methods=['GET', 'POST'])
 @login_required
 def edit_profile():
@@ -62,6 +64,7 @@ def edit_profile():
         return render_template('edit_profile.html', user=current_user, subjects=Subject.query.all())
     else:
         return redirect("views.dashboard", user=current_user)
+
 
 @auth.route("/logout")
 @login_required

@@ -16,7 +16,6 @@ function modify_subject_by_qual() {
             var special_subs = (document.getElementsByClassName("as_only"));
         }
     }
-
     for (let index = 0; index < show_subs.length; index++) {
         show_subs[index].style.display = "flex";
         show_subs[index].classList.remove("by_qual");
