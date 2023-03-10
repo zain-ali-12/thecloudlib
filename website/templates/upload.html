@@ -10,7 +10,7 @@
 
 <div id="options_container">
     {% from 'macros.html' import options_container %}
-    {{options_container()}}
+    {{options_container(user, subjects, qualifications)}}
     <div class="options" id="resource_types">
         <button class="close_options" onclick="close_option('qualifications')">🗙</button>
         <div id="scroll_text">scroll for more options</div>
@@ -30,10 +30,10 @@
 <div class="form_container">
     
     <div class="forsubject">
-        <label for="none">Qualification</label>
+        <label for="qualifications_choice">Qualification</label>
         <button class="choice" onclick="display_options('qualifications')" id="qualifications_choice"> Choose
             Qualification</button>
-        <label for="none">Subject</label>
+        <label for="subjects_choice">Subject</label>
         <button class="choice" onclick="display_options('subjects')" id="subjects_choice">Select a subject</button>
         <button class="choice" onclick="display_options('resource_types')" id="resource_types_choice">Choose resource
             type</button>

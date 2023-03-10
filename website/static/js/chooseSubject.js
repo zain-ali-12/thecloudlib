@@ -2,7 +2,7 @@
 function modify_subject_by_qual() {
     var qualification = document.getElementById("qualification").value;
 
-    if (qualification == "IGCSE") {
+    if (qualification === "IGCSE") {
         var hide_subs = document.getElementsByClassName("al_subject");
         var show_subs = document.getElementsByClassName("ig_subject");
         var special_subs = []
@@ -10,7 +10,7 @@ function modify_subject_by_qual() {
         var hide_subs = document.getElementsByClassName("ig_subject");
         var show_subs = document.getElementsByClassName("al_subject");
 
-        if (qualification == "AS-Level") {
+        if (qualification === "AS-Level") {
             var special_subs = (document.getElementsByClassName("al_only"));
         } else {
             var special_subs = (document.getElementsByClassName("as_only"));

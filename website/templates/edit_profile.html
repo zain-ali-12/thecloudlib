@@ -3,26 +3,76 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/edit_profile.css')}}">
 {% endblock %}
 {% block body %}
+<div id="options_container">
+            {% from 'macros.html' import options_container %}
+            {{options_container(user, subjects, qualifications)}}
+            </div>
 <div class="form_container">
-    <h1>Sign up for The Cloudlib</h1>
-    <form action="/edit-profile" method="post">
-        <label for="email"></label>
-        <input required type="email" name="email" id="email" placeholder="Enter Email">
-        {{user.posts[0]}}
-        {{subjects}}
+    <div class="image_username">
+        {% if not user.profile_complete %}
+            {% set pfp_url = "base_profile" %}
+        {% else %}
+            {% set pfp_url = user.id | str %}
+        {% endif %}
+        <img src="{{url_for('static', filename='/media/content/profile_pictures/' + pfp_url + '.png')}}"
+            alt="profile picture">
+        <h2>{{user.username}}</h2>
+    </div>
+    <div id="main_container">
+        <div id="personal_info">
+            <h3>Personal information</h3>
+            <div class="info_container">
+                <label>Username</label>
+                <p class="form_data">{{ user.username }}</p>
 
-        <label for="username">Username</label>
-        <input required type="text" name="username" id="username" placeholder="Create a  username">
+                <label>Email</label>
+                <p class="form_data">{{ user.email }}</p>
 
-        <label for="password">Password</label>
-        <input required type="password" name="password" id="password" placeholder="Create a password">
+                <label>Password</label>
+                <p class="form_data">********</p>
 
-        <label for="password2">Verify password</label>
-        <input required type="password" name="password2" id="password2" placeholder="Re-enter your password">
-        <p hidden id="pass_error">Passwords do not match</p>
-        <input type="submit" value="Sign up" id="submit">
+                 <span>Posts:</span>
+                {% set num_posts = user.posts|length %}
+                <a href="/view" class="profile_link navbar_link form_data" title="View latest post by user">{{ num_posts }} {% if num_posts == 1 %}post{% else %}posts{% endif %}</a>
+            </div>
+        </div>
+        <form action="/edit-profile" method="post" id="edit_container">
+            <h3>Complete your profile</h3>
+            <div class="edit-fields-container">
+                <label for="first_name">First Name</label>
+                <input type="text" name="fname" id="first_name" class="form_data form_value">
+            </div>
+            <div class="edit-fields-container">
+                <label for="last_name">Last Name</label>
+                <input type="text" name="lname" id="last_name" class="form_data form_value">
+            </div>
 
-    </form>
+            <div class="edit-fields-container">
+                <label for="role">What is your role?</label>
+                <input type="text" name="role" id="role" hidden="">
+                <div id="role-choices">
+                    <span id="student_choice" class="choice" onclick="chooseRole('Student')">Student</span>
+                    <span id="teacher_choice" class="choice" onclick="chooseRole('Teacher')">Teacher</span>
+                </div>
+            </div>
+            <!-- FOR CHOICES -->
+            <input required hidden type="text" name="qualification" id="qualification">
+            <input required hidden type="text" name="subject" id="subject">
+            <!-- END OF CHOICES -->
+
+            <div class="forsubject">
+                <label for="qualifications_choice">Qualification</label>
+                <span class="choice edit-fields-container" onclick="display_options('qualifications')" id="qualifications_choice"> Choose
+                    Qualification</span>
+                <label for="subjects_choice">Subject</label>
+                <span class="choice edit-fields-container" onclick="display_options('subjects')" id="subjects_choice">Select a subject</span>
+            </div>
+
+
+
+        </form>
+        <script src="{{url_for('static',filename='js/chooseSubject.js')}}"></script>
+    </div>
     {% from "macros.html" import flashed %}
     {{ flashed() }}
 </div>

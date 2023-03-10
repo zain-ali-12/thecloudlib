@@ -1,6 +1,235 @@
 body {
     height: 100vh;
-    background: url('/static/media/backgrounds/background1.jpg');
+    background: url('/static/media/backgrounds/background.jpg');
     background-size: cover;
     background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.form_container {
+    height: 100vh;
+    width: 60vw;
+    border-radius: 2rem;
+    box-shadow: 0 0 5rem black;
+}
+
+.image_username {
+    height: 30vh;
+    border-radius: 2rem 2rem 0 0;
+    background: linear-gradient(#39404d, #242f3c);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.image_username img {
+    height: 25vh;
+    border-radius: 25vh;
+    margin-left: 5vh;
+}
+.image_username h2 {
+    text-align: center;
+    font-size: 5rem;
+    color: #e0e0e0;
+}
+
+#main_container {
+    height: 60vh;
+    overflow: hidden;
+    background: linear-gradient(#171717 0%, #181818 3%, #0e0e0e);
+    /*padding: 8vh 6vh 6vh 6vh;*/
+    display: flex;
+    color: #e0e0e0;
+    padding: 5vh 3vh;
+    justify-content: space-evenly;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+#personal_info {
+    background: linear-gradient(#242931, #171e26);
+    padding: 2vh 3vh 2vh 3vh;
+    border-radius: 3vh;
+    width: 15vw;
+    box-shadow: 0 0 0.5rem #171717;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info_container {
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.form_data {
+    background: #e0e0e0;
+    color: #0e0e0e;
+    text-align: center;
+    border-radius: 1rem;
+    margin: 1vh 0 2vh 0;
+    padding: 0.5vh;
+}
+
+#personal_info h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+form h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+#edit_container {
+    width: 50%;
+    /*background: red;*/
+}
+
+.form_value{
+    outline: none;
+    border: none;
+    margin: 0;
+}
+
+.form_value:hover, .form_value:focus {
+    box-shadow: 0 0 0.5rem #e0e0e0;
+}
+
+.edit-fields-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3vh;
+}
+
+.choice {
+    background: #383838;
+    padding: 0.5vw 1vw;
+    border-radius: 1rem;
+}
+
+.choice:hover{
+    cursor: pointer;
+    background: #e0e0e0;
+    box-shadow: 0 0 0.5rem #e0e0e0;
+    color: #0e0e0e;
+}
+
+#options_container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(0.2rem);
+    z-index: 2;
+}
+
+.subs_opts_cont {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    width: inherit;
+    height: inherit;
+    overflow: scroll;
+    text-align: center;
+    border-radius: 1.5rem;
+    padding-top: 0.6rem;
+    margin-top: 2rem;
+}
+
+
+.subs_opts_cont::-webkit-scrollbar {
+    display: none;
+}
+
+#scroll_text {
+    font-size: 1.2rem;
+}
+
+.option:hover {
+    cursor: pointer;
+    color: white;
+    text-shadow: 0px 0px 0.15rem white;
+}
+
+.options {
+    overflow-y: scroll;
+    padding: 5rem;
+    background-image: linear-gradient(#2b3341, #242f3c);
+    display: none;
+    flex-direction: column;
+    border-radius: 2rem;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    width: 50vw;
+    font-size: 3rem;
+    color: #e0e0e0;
+    box-shadow: 0px 0px 5rem #1d2532;
+    overflow: hidden;
+}
+
+
+#subjects {
+    font-size: 2rem;
+}
+
+.close_options {
+    background: none;
+    color: white;
+    border: none;
+    font-size: 2rem;
+    align-self: flex-end;
+    position: fixed;
+    transform: translate(7vh, -30vh);
+}
+
+.close_options:hover {
+    cursor: pointer;
+}
+
+.option {
+    display: flex;
+    width: inherit;
+    justify-content: center;
+    /* border-bottom: 0.1rem solid #dc9860; */
+}
+
+.load_options {
+    animation: load_options 0.5;
+}
+
+@keyframes load_options {
+    0% {
+        scale: 0%;
+    }
+    100% {
+        scale: 100%;
+    }
+}
+
+.popup_info {
+    position: fixed;
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.option span {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    pointer-events: none;
 }

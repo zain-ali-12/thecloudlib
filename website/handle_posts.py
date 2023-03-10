@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from werkzeug.utils import secure_filename
 from flask_login import current_user, login_required
-from .models import Post
+from .models import Post, Subject, Qualification
 from . import db
 from random import randint
 
@@ -12,7 +12,7 @@ handle_posts = Blueprint("handle_posts", __name__)
 @login_required
 def upload_file():
     if request.method == "GET":
-        return render_template("upload.html", user=current_user)
+        return render_template("upload.html", user=current_user, subjects=Subject.query.all(), qualifications=Qualification.query.all())
     else:
         post_id = randint(1, 1000000000000000)
         while True:

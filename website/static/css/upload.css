@@ -9,7 +9,7 @@ body {
 
 .form_container {
     width: 60vw;
-    height: 50vh;
+    /*height: 50vh;*/
     display: flex;
     flex-direction: row;
     align-items: flex-start;

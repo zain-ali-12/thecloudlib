@@ -19,8 +19,8 @@
         <div class="get-feedback feedback">
             <div class="post-topic">{{ post.title }}</div>
             <div class="details">
-                {{post.subject}}>
-                {{post.subject}}>
+                {{subjects.query.filter_by(id=post.subject).first().qualifications[1].id}}>
+                {{subjects.query.filter_by(id=post.subject).first().subject_name}}>
                 {{post.topic}}
             </div>
             <hr>

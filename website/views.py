@@ -4,6 +4,7 @@ from .models import Post, Subject, Qualification
 
 views = Blueprint("views", __name__)
 
+
 @views.route("/")
 @views.route("/home")
 def home():
@@ -17,7 +18,8 @@ def home():
 def view_material():
     post_id = 0
     posts = Post.query.all()
-    return render_template("view.html",user=current_user, post_id=post_id, posts=posts, subjects=Subject, qualifications=Qualification)
+    return render_template("view.html", user=current_user, post_id=post_id, posts=posts, subjects=Subject, qualifications=Qualification)
+
 
 @views.route("/dashboard")
 @login_required

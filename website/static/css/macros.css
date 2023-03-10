@@ -116,11 +116,37 @@
     font-size: 1rem;
 }
 
+.info {
+    margin-top: 2vh;
+    display: flex;
+}
+
 .profile_link {
+    flex-grow: 1;
     font-size: 1rem;
-    color: blue;
+    text-align: center;
+    color: #222126;
+    background-color: #e0e0e0;
+    border-radius: 1rem;
+    font-family: "Bebas Neue";
+}
+
+.profile_link:hover {
+    box-shadow: 0 0 1rem #e0e0e0;
+    color: black
 }
 
 .member_since {
     font-size: 0.8rem;
+    margin-top: 0;
 }
+
+.complete_profile {
+    background-color: orange;
+    border-radius: 1rem;
+    margin: 2vh 0 0 0;
+}
+.complete_profile:hover {
+    box-shadow: 0 0 1rem orange;
+}
+

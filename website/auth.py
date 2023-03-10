@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from .models import User, db
 from flask_login import login_required, login_user, logout_user, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
-from .models import Subject
+from .models import Subject, Qualification
 
 auth = Blueprint("auth", __name__)
 
@@ -38,7 +38,7 @@ def signup():
     if request.method == "GET":
         return render_template("sign_up.html")
     elif request.method == "POST":
-        email = request.form.get("email")
+        email = request.form.get("email").lower()
         username = request.form.get("username")
         password = request.form.get("password")
         email_exists = User.query.filter_by(email=email).first()
@@ -61,9 +61,9 @@ def signup():
 @login_required
 def edit_profile():
     if request.method == 'GET':
-        return render_template('edit_profile.html', user=current_user, subjects=Subject.query.all())
+        return render_template('edit_profile.html', user=current_user, subjects=Subject.query.all(), qualifications=Qualification.query.all())
     else:
-        return redirect("views.dashboard", user=current_user)
+        return redirect("views.dashboard", user=current_user, subjects=Subject.query.all(), qualifications=Qualification.query.all())
 
 
 @auth.route("/logout")

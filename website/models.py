@@ -20,6 +20,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     date_created = db.Column(db.DateTime(timezone=True), default=func.now())
     role = db.Column(db.String(100))
+    profile_complete = db.Column(db.Boolean, default=False)
     posts = db.relationship('Post', backref='user', passive_deletes=True)
     subjects = db.relationship('Subject', secondary=user_subject,  backref='user')
 
@@ -40,9 +41,9 @@ class Feedback(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     likes = db.Column(db.Integer)
     rating = db.Column(db.Integer)
-    comments = db.Column(db.String(500))
     post_id = db.Column(db.Integer, db.ForeignKey('post.id', ondelete="CASCADE"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete="CASCADE"), nullable=False)
+    comment_id = db.Column(db.Integer, db.ForeignKey('comment.id', ondelete="CASCADE"))
 
 
 class Qualification(db.Model, UserMixin):
@@ -54,3 +55,9 @@ class Subject(db.Model, UserMixin):
     subject_name = db.Column(db.String(200))
     posts = db.relationship('Post', backref='Subject', passive_deletes=True)
     qualifications = db.relationship('Qualification', secondary=subject_qualification, backref='Subject')
+
+
+class Comment(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    comment = db.Column(db.Text)
+    qualifications = db.relationship('Feedback', backref='Comment')
