@@ -44,7 +44,7 @@ def signup():
         email_exists = User.query.filter_by(email=email).first()
         username_exists = User.query.filter_by(username=username).first()
         if email_exists:
-            flash("Account already exists", category="error")
+            flash("This email already belongs to an account, do you wish to log in?", category="error")
         elif username_exists:
             flash("Username already taken", category="error")
         else:
@@ -63,7 +63,13 @@ def edit_profile():
     if request.method == 'GET':
         return render_template('edit_profile.html', user=current_user, subjects=Subject.query.all(), qualifications=Qualification.query.all())
     else:
-        return redirect("views.dashboard", user=current_user, subjects=Subject.query.all(), qualifications=Qualification.query.all())
+        fname = request.form['fname']
+        lname = request.form['lname']
+        role = request.form['role']
+        qualification = request.form['qualification']
+        subjects = request.form['subject']
+
+        return redirect(url_for("views.dashboard"))
 
 
 @auth.route("/logout")

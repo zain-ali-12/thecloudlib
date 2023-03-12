@@ -73,7 +73,8 @@ body {
     text-align: center;
     border-radius: 1rem;
     margin: 1vh 0 2vh 0;
-    padding: 0.5vh;
+    flex-grow: 0;
+    /*padding: 0.5rem;*/
 }
 
 #personal_info h3 {
@@ -95,6 +96,7 @@ form h3 {
     outline: none;
     border: none;
     margin: 0;
+    padding: 0.25rem 0.5rem;
 }
 
 .form_value:hover, .form_value:focus {
@@ -108,17 +110,33 @@ form h3 {
     margin-bottom: 3vh;
 }
 
-.choice {
-    background: #383838;
-    padding: 0.5vw 1vw;
-    border-radius: 1rem;
+#role-choices {
+    display: flex;
+    justify-content: space-between;
+}
+#role-choices:hover {
+    cursor: auto;
+    box-shadow: none;
+    background: linear-gradient(#39404d, #242f3c);
+    color: #e0e0e0;
 }
 
-.choice:hover{
+.choice {
+    background: linear-gradient(#39404d, #242f3c);
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.choice:hover, .chosen{
     cursor: pointer;
     background: #e0e0e0;
     box-shadow: 0 0 0.5rem #e0e0e0;
     color: #0e0e0e;
+}
+
+.chosen {
+    box-shadow: none;
 }
 
 #options_container {
@@ -160,11 +178,10 @@ form h3 {
 .option:hover {
     cursor: pointer;
     color: white;
-    text-shadow: 0px 0px 0.15rem white;
+    text-shadow: 0 0 0.15rem white;
 }
 
 .options {
-    overflow-y: scroll;
     padding: 5rem;
     background-image: linear-gradient(#2b3341, #242f3c);
     display: none;
@@ -176,8 +193,9 @@ form h3 {
     width: 50vw;
     font-size: 3rem;
     color: #e0e0e0;
-    box-shadow: 0px 0px 5rem #1d2532;
+    box-shadow: 0 0 5rem #1d2532;
     overflow: hidden;
+    position: relative;
 }
 
 
@@ -199,10 +217,25 @@ form h3 {
     cursor: pointer;
 }
 
+#student_choice, #teacher_choice {
+    border-radius: 1rem;
+    padding: 0 0.5rem;
+}
+
+#student_choice:hover, #teacher_choice:hover {
+    cursor: pointer;
+    background: #e0e0e0;
+    box-shadow: 0 0 1rem #e0e0e0;
+    color: #0e0e0e;
+}
+
 .option {
     display: flex;
     width: inherit;
-    justify-content: center;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+    padding: 0 1rem;
+    box-sizing: border-box;
     /* border-bottom: 0.1rem solid #dc9860; */
 }
 
@@ -212,7 +245,7 @@ form h3 {
 
 @keyframes load_options {
     0% {
-        scale: 0%;
+        scale: 0;
     }
     100% {
         scale: 100%;
@@ -220,7 +253,7 @@ form h3 {
 }
 
 .popup_info {
-    position: fixed;
+    position: absolute;
     top: 2rem;
     display: flex;
     flex-direction: column;
@@ -232,4 +265,78 @@ form h3 {
     justify-content: flex-start;
     align-items: center;
     pointer-events: none;
+}
+
+.forsubject {
+    flex-direction: column;
+    margin-bottom: 0;
+}
+
+.subject-selection {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#edit-profile-picture {
+    width: 10vh;
+    border-radius: 100%;
+}
+
+#image-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#image-upload-container label {
+    align-self: center;
+    margin-bottom: 1vh;
+}
+
+#image-upload-container input{
+    padding: 0.5rem;
+}
+
+#image-upload-container input:hover {
+    background: linear-gradient(#2b3341, #242f3c);
+    color: #e0e0e0;
+    box-shadow: none;
+}
+
+#image-upload-container input::-webkit-file-upload-button {
+    border-radius: 1rem;
+    outline: none;
+    border: none;
+    font-family: "Bebas Neue";
+}
+
+#image-upload-container input::-webkit-file-upload-button:hover {
+    background: #e0e0e0;
+    box-shadow: 0 0 1rem #e0e0e0;
+    color: black;
+    cursor: pointer;
+}
+.submit {
+    outline: none;
+    width: 100%;
+    color: white;
+    border: none;
+}
+
+.submit:hover {
+    outline: none;
+    border: none;
+    background: #186064;
+    color: white;
+    box-shadow: 0 0 1rem #186064;
+}
+
+.selected-option {
+    background-color: #186064;
+    border-radius: 1rem;
+}
+
+.selected-option:hover {
+    box-shadow: 0 0 0.5rem #186064;
 }

@@ -89,7 +89,7 @@
 
 {% endmacro %}
 
-{% macro options_container(user, subjects, qualifications) %}
+{% macro options_container(user, subjects, qualifications, context) %}
 <div class="options" id="qualifications">
     <span class="close_options" onclick="close_option('qualifications')">🗙</span>
     <div class="opts_cont">
@@ -99,7 +99,7 @@
     </div>
 </div>
 
-<div class="options" id="subjects">
+<div class="options {{context}}" id="subjects">
     <span class="close_options" onclick="close_option('subjects')">🗙</span>
     <div class="popup_info">
         <div id="subject_text">Showing <span id="qualification_text">All</span> subjects</div>

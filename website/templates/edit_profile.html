@@ -5,7 +5,7 @@
 {% block body %}
 <div id="options_container">
             {% from 'macros.html' import options_container %}
-            {{options_container(user, subjects, qualifications)}}
+            {{options_container(user, subjects, qualifications, 'multiple')}}
             </div>
 <div class="form_container">
     <div class="image_username">
@@ -26,22 +26,32 @@
                 <p class="form_data">{{ user.username }}</p>
 
                 <label>Email</label>
-                <p class="form_data">{{ user.email }}</p>
+                <p class="form_data" onclick="changeEmail()">{{ user.email }}</p>
 
                 <label>Password</label>
-                <p class="form_data">********</p>
+                <p class="form_data" onclick="changePassword()">********</p>
 
                  <span>Posts:</span>
                 {% set num_posts = user.posts|length %}
                 <a href="/view" class="profile_link navbar_link form_data" title="View latest post by user">{{ num_posts }} {% if num_posts == 1 %}post{% else %}posts{% endif %}</a>
             </div>
         </div>
-        <form action="/edit-profile" method="post" id="edit_container">
+        <form action="/edit-profile" method="post" id="edit_container" enctype="multipart/form-data">
             <h3>Complete your profile</h3>
+
+            <div class="edit-fields-container">
+                <img id="edit-profile-picture" src="{{url_for('static', filename='/media/content/profile_pictures/' + pfp_url + '.png')}}">
+                <div id="image-upload-container">
+                    <label for="profile-image-input">Upload a profile picture</label>
+                    <input type="file" name="profile-image" id="profile-image-input" class="choice" accept="image/png, image/jpeg">
+                </div>
+            </div>
+
             <div class="edit-fields-container">
                 <label for="first_name">First Name</label>
                 <input type="text" name="fname" id="first_name" class="form_data form_value">
             </div>
+
             <div class="edit-fields-container">
                 <label for="last_name">Last Name</label>
                 <input type="text" name="lname" id="last_name" class="form_data form_value">
@@ -49,29 +59,31 @@
 
             <div class="edit-fields-container">
                 <label for="role">What is your role?</label>
-                <input type="text" name="role" id="role" hidden="">
-                <div id="role-choices">
-                    <span id="student_choice" class="choice" onclick="chooseRole('Student')">Student</span>
-                    <span id="teacher_choice" class="choice" onclick="chooseRole('Teacher')">Teacher</span>
+                <input type="text" name="role" id="role" hidden>
+                <div class="choice" id="role-choices">
+                    <span id="student_choice" class="" onclick="chooseRole('Student')">Student</span>
+                    <span id="teacher_choice" class="" onclick="chooseRole('Teacher')">Teacher</span>
                 </div>
             </div>
             <!-- FOR CHOICES -->
-            <input required hidden type="text" name="qualification" id="qualification">
-            <input required hidden type="text" name="subject" id="subject">
+            <input hidden type="text" name="qualification" id="qualification">
+            <input hidden type="text" name="subject[]" id="subject">
             <!-- END OF CHOICES -->
 
-            <div class="forsubject">
-                <label for="qualifications_choice">Qualification</label>
-                <span class="choice edit-fields-container" onclick="display_options('qualifications')" id="qualifications_choice"> Choose
-                    Qualification</span>
-                <label for="subjects_choice">Subject</label>
-                <span class="choice edit-fields-container" onclick="display_options('subjects')" id="subjects_choice">Select a subject</span>
+            <div class="forsubject edit-fields-container">
+                <div class="subject-selection edit-fields-container">
+                    <label for="qualifications_choice">Qualification</label>
+                    <span class="choice" onclick="display_options('qualifications')" id="qualifications_choice"> Choose Qualification</span>
+                </div>
+                <div class="subject-selection edit-fields-container">
+                    <label for="subjects_choice">Subject</label>
+                    <span class="choice" onclick="display_options('subjects')" id="subjects_choice">Select a subject</span>
+                </div>
             </div>
-
-
-
+            <input type="submit" value="Save changes" class="choice submit">
         </form>
         <script src="{{url_for('static',filename='js/chooseSubject.js')}}"></script>
+        <script src="{{url_for('static',filename='js/edit_profile.js')}}"></script>
     </div>
     {% from "macros.html" import flashed %}
     {{ flashed() }}

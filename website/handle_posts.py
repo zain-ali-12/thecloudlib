@@ -25,7 +25,7 @@ def upload_file():
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
-        subject = request.form.get("subject")
+        subject = request.form.get("subject").split(',')[-1]
         resource_type = request.form.get("resource_type")
         topic = request.form.get("topic")
         title = request.form.get("title")

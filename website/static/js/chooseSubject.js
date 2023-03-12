@@ -1,3 +1,5 @@
+var selected_subject_count = 0
+
 
 function modify_subject_by_qual() {
     var qualification = document.getElementById("qualification").value;
@@ -42,23 +44,40 @@ function choose_option(event) {
     var inner_text = chosen_option.innerText
     var input_id = ""
 
-    if (parent_id == "subjects") {
+    document.getElementById(chosen_option.id).classList.add("selected-option")
+
+    // due to structure of html, for subject options the option text is one element lower, hence choosing from children
+    if (parent_id === "subjects") {
         inner_text = chosen_option.children[0].innerText;
     }
 
     for (let index = 0; index < parent_id.length - 1; index++) {
         input_id = input_id + parent_id[index];
     }
-    
-    document.getElementById(input_id).value = chosen_option.id;
 
-    if (input_id == "qualification") {
+    if (input_id === "qualification") {
         modify_subject_by_qual(chosen_option.id);
+    } else {
+        selected_subject_count++
     }
 
-    document.getElementById(parent_id + "_choice").innerText = inner_text;
+    if (selected_subject_count === 0) {
+        document.getElementById(input_id).value = chosen_option.id;
+        document.getElementById(parent_id + "_choice").innerText = inner_text;
+    } else {
+        const new_input = document.createElement('input')
+        new_input.name = 'subject[]'
+        new_input.type = 'text'
+        new_input.setAttribute('hidden', '')
+        new_input.value = chosen_option.id
+        document.getElementById('edit_container').append(new_input)
+        document.getElementById(parent_id + "_choice").innerText = selected_subject_count.toString() + " subjects selected";
+    }
+
     // document.getElementById(parent_id + "_choice").innerText.classList.add("green");
-    close_option(parent_id);
+    if (!(document.getElementById(parent_id).classList.value.includes('multiple'))) {
+        close_option(parent_id);
+    }
 }
 
 function display_options(options_id) {
