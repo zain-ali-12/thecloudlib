@@ -67,7 +67,7 @@ def edit_profile():
         lname = request.form['lname']
         role = request.form['role']
         qualification = request.form['qualification']
-        subjects = request.form['subject[]']
+        subjects = request.form.getlist(['subject[]'])
         print(request.form.keys(), "  subject: ", request.form['subject[]'])
         return redirect(url_for("views.dashboard"))
 
