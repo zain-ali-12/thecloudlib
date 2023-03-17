@@ -21,3 +21,11 @@ For Windows<br>
 
 For Linux<br>
 `python3 app.py`
+
+## Debugging
+By default, the server does not run in debug mode. 
+
+To run the server in debug mode add the `--debug` flag when running the python program.
+
+eg.
+`python app.py --debug`
