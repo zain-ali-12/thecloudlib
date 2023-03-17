@@ -3,7 +3,6 @@ var selected_subject_count = 0
 
 function modify_subject_by_qual() {
     var qualification = document.getElementById("qualification").value;
-
     if (qualification === "IGCSE") {
         var hide_subs = document.getElementsByClassName("al_subject");
         var show_subs = document.getElementsByClassName("ig_subject");
@@ -35,9 +34,12 @@ function modify_subject_by_qual() {
     document.getElementById("qualification_text").innerText = qualification;
 }
 
+
 for (let index = 0; index < document.getElementsByClassName("option").length; index++) {
     document.getElementsByClassName("option")[index].addEventListener("click", choose_option);
 }
+
+
 function choose_option(event) {
     var chosen_option = event.target;
     var parent_id = chosen_option.parentElement.parentElement.id;
@@ -56,7 +58,8 @@ function choose_option(event) {
     }
 
     if (input_id === "qualification") {
-        modify_subject_by_qual(chosen_option.id);
+        document.getElementById(input_id).value = chosen_option.id;
+        modify_subject_by_qual();
     } else {
         selected_subject_count++
     }
@@ -80,6 +83,7 @@ function choose_option(event) {
     }
 }
 
+
 function display_options(options_id) {
     var options = document.getElementById(options_id);
     var container = document.getElementById("options_container");
@@ -90,6 +94,7 @@ function display_options(options_id) {
     options.style.display = "flex";
 
 }
+
 
 function close_option(options_id) {
     var options = document.getElementById(options_id);

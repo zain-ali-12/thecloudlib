@@ -1,7 +1,8 @@
 cloudlib-venv/
 support/
 .idea
-temp.py
-w9709_m22_qp_32.pdf
-logo_dark_long_transparent.pdf
+support/edit_pdf.py
+support/w9709_m22_qp_32.pdf
+support/logo_dark_long_transparent.pdf
 9709_m22_qp_32.pdf
+tutu

@@ -44,7 +44,7 @@ class Feedback(db.Model, UserMixin):
     rating = db.Column(db.Integer)
     post_id = db.Column(db.Integer, db.ForeignKey('post.id', ondelete="CASCADE"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete="CASCADE"), nullable=False)
-    comment_id = db.Column(db.Integer, db.ForeignKey('comment.id', ondelete="CASCADE"))
+    comment= db.Column(db.Text)
 
 
 class Qualification(db.Model, UserMixin):
@@ -57,8 +57,3 @@ class Subject(db.Model, UserMixin):
     posts = db.relationship('Post', backref='Subject', passive_deletes=True)
     qualifications = db.relationship('Qualification', secondary=subject_qualification, backref='Subject')
 
-
-class Comment(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    comment = db.Column(db.Text)
-    qualifications = db.relationship('Feedback', backref='Comment')
