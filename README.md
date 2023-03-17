@@ -11,7 +11,7 @@ For Windows<br>
 For Linux<br>
 `pip3 install -r requirements.txt`
 
-## Running the server
+## Running the server (for testing)
 
 To run the server `app.py` must be run.
 It can be run using the command line with the following commands
