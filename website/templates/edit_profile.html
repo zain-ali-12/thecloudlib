@@ -23,7 +23,7 @@
             <h3>Personal information</h3>
             <div class="info_container">
                 <label>Username</label>
-                <p class="form_data">{{ user.username }}</p>
+                <p class="form_data" onclick="changeUsername()">{{ user.username }}</p>
 
                 <label>Email</label>
                 <p class="form_data" onclick="changeEmail()">{{ user.email }}</p>
@@ -37,7 +37,7 @@
             </div>
         </div>
         <form action="/edit-profile" method="post" id="edit_container" enctype="multipart/form-data">
-            <h3>Complete your profile</h3>
+            <h3>Edit your profile</h3>
 
             <div class="edit-fields-container">
                 <img id="edit-profile-picture" src="{{url_for('static', filename='/media/content/profile_pictures/' + pfp_url + '.png')}}">

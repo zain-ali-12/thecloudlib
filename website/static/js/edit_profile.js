@@ -18,12 +18,18 @@ function chooseRole(role) {
 }
 
 
-function changeEmail() {
+function changeUsername() {
+    console.log("USERNAMEECHANGEEEEEEEEEEEE")
+}
 
+
+function changeEmail() {
+    console.log("EMAILLLLCHANGEEEEEEEEEEEE")
 }
 
 
 function changePassword() {
+    console.log("PASSWORDDDDCHANGEEEEEEEEEEEE")
 
 }
 

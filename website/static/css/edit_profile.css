@@ -341,3 +341,8 @@ form h3 {
 .selected-option:hover {
     box-shadow: 0 0 0.5rem #186064;
 }
+
+p.form_data:hover {
+    cursor: pointer;
+    box-shadow: 0 0 1rem #e0e0e0;
+}
