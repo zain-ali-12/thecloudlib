@@ -48,17 +48,17 @@
             </div>
 
             <div class="edit-fields-container">
-                <label for="first_name">First Name</label>
+                <label for="first_name">{% if user.fname != None %}<span class="completed">✓</span>{% else %}<span class="incomplete">✗</span> {% endif %}First Name</label>
                 <input type="text" name="fname" id="first_name" class="form_data form_value">
             </div>
 
             <div class="edit-fields-container">
-                <label for="last_name">Last Name</label>
+                <label for="last_name">{% if user.lname != None %}<span class="completed">✓</span>{% else %}<span class="incomplete">✗</span> {% endif %}Last Name</label>
                 <input type="text" name="lname" id="last_name" class="form_data form_value">
             </div>
 
             <div class="edit-fields-container">
-                <label for="role">What is your role?</label>
+                <label for="role">{% if user.role != None %}<span class="completed">{{"✓"}}</span>{% else %}<span class="incomplete">✗</span>{% endif %}What is your role?</label>
                 <input type="text" name="role" id="role" hidden>
                 <div class="choice" id="role-choices">
                     <span id="student_choice" class="" onclick="chooseRole('Student')">Student</span>
@@ -67,16 +67,15 @@
             </div>
             <!-- FOR CHOICES -->
             <input hidden type="text" name="qualification" id="qualification">
-            <input hidden type="text" name="subject[]" id="subject">
             <!-- END OF CHOICES -->
 
             <div class="forsubject edit-fields-container">
                 <div class="subject-selection edit-fields-container">
-                    <label for="qualifications_choice">Qualification</label>
+                    <label for="qualifications_choice">{% if user.subjects != [] %}<span class="completed">✓</span>{% else %}<span class="incomplete">✗</span> {% endif %}Qualification</label>
                     <span class="choice" onclick="display_options('qualifications')" id="qualifications_choice"> Choose Qualification</span>
                 </div>
                 <div class="subject-selection edit-fields-container">
-                    <label for="subjects_choice">Subject</label>
+                    <label for="subjects_choice">{% if user.subjects != [] %}<span class="completed">✓</span>{% else %}<span class="incomplete">✗</span>{% endif %}Subject</label>
                     <span class="choice" onclick="display_options('subjects')" id="subjects_choice">Select a subject</span>
                 </div>
             </div>
