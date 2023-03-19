@@ -1,5 +1,5 @@
 def update_qualifications(app, db):
-    from .models import Qualification
+    from website.models import Qualification
     quals = ['IGCSE', "AS-Level", "A-Level"]
     with app.app_context():
         for i in quals:
@@ -8,7 +8,7 @@ def update_qualifications(app, db):
 
 
 def update_subjects(app, db):
-    from .models import Subject, Qualification
+    from website.models import Subject, Qualification
     with open('subs.csv', 'r') as f:
         csv_data = [data[:-1] for data in f.readlines()][1:]
         for data in csv_data:
