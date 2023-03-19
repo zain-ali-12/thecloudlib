@@ -56,30 +56,28 @@ function choose_option(event) {
     for (let index = 0; index < parent_id.length - 1; index++) {
         input_id = input_id + parent_id[index];
     }
-
-    if (input_id === "qualification") {
-        document.getElementById(input_id).value = chosen_option.id;
-        modify_subject_by_qual();
-    } else {
-        selected_subject_count++
-    }
-
-    if (selected_subject_count === 0) {
+    console.log(input_id)
+    if (input_id !== "subject") {
         document.getElementById(input_id).value = chosen_option.id;
         document.getElementById(parent_id + "_choice").innerText = inner_text;
-    } else {
-        const new_input = document.createElement('input')
-        new_input.name = 'subject[]'
-        new_input.type = 'text'
-        new_input.setAttribute('hidden', '')
-        new_input.value = chosen_option.id
-        document.getElementById('edit_container').append(new_input)
-        document.getElementById(parent_id + "_choice").innerText = selected_subject_count.toString() + " subjects selected";
-    }
-
-    // document.getElementById(parent_id + "_choice").innerText.classList.add("green");
-    if (!(document.getElementById(parent_id).classList.value.includes('multiple'))) {
+        if (input_id === 'qualification'){modify_subject_by_qual();}
         close_option(parent_id);
+    }else{
+        if (document.getElementById(parent_id).classList.value.includes('multiple')) {
+            const new_input = document.createElement('input')
+            new_input.name = 'subjects'
+            new_input.type = 'text'
+            new_input.setAttribute('hidden', '')
+            new_input.value = chosen_option.id
+            document.getElementById('edit_container').append(new_input)
+            selected_subject_count++
+            document.getElementById(parent_id + "_choice").innerText = selected_subject_count.toString() + " Subjects selected";
+        }else {
+            document.getElementById('subject').value = chosen_option.id
+            close_option(parent_id);
+            document.getElementById(parent_id + "_choice").innerText = inner_text;
+        }
+    // document.getElementById(parent_id + "_choice").innerText.classList.add("green");
     }
 }
 
