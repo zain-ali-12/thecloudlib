@@ -111,14 +111,36 @@
 }
 
 .profile_content {
-    padding: 2vh;
+    padding: 1vw;
     border-radius: 1rem;
     font-size: 1rem;
+    max-width: 13vw;
 }
 
 .info {
     margin-top: 2vh;
     display: flex;
+}
+.info-title{
+    font-weight: bold;
+}
+
+.subjects_info {
+    flex-direction: column;
+}
+
+.subjects_info ol {
+    width: 9vw;
+    padding: 2vh 2vw 2vh 2vw;
+}
+.subjects_info ol div {
+    margin-top: 2vh;
+}
+
+.subjects_info ol, .subjects_info ol li::marker {
+    background: linear-gradient(#2d3436, #1d2224);
+    box-shadow: 0 0 1rem #1d2224;
+    border-radius: 1rem;
 }
 
 .profile_link {
@@ -129,6 +151,7 @@
     background-color: #e0e0e0;
     border-radius: 1rem;
     font-family: "Bebas Neue";
+    margin: 0 1vw;
 }
 
 .profile_link:hover {

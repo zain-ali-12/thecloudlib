@@ -52,20 +52,46 @@
                 {{ user.date_created.strftime('%d %B %Y') }}
             </div>
             <hr>
-            {% if not user.profile_complete %}
+            {% set profile_complete = not None in [user.name, user.role, user.profile_picture] and user.subjects != [] %}
+            {% if user.fname != None or user.lname != None%}
+            <div class="role_info info">
+                {{ user.fname + " " + user.lname }}
+            </div>
+            {% endif %}
+            {% if user.role != None %}
+            <div class="role_info info info-title">
+                {{ user.role }}
+            </div>
+            {% endif %}
+            {% if user.subjects != [] %}
+            <div class="subjects_info info">
+                {% if user.subjects|len > 2 %}
+                <div class="info-title">Subjects of interest</div>
+                <ol>
+                    <li>{{user.subjects[0].subject_name}}</li>
+                    <li>{{user.subjects[1].subject_name}}</li>
+                    <div>and {{user.subjects|len - 2}} more</div>
+                </ol>
+                {% else %}
+                {% for subject in user.subjects %}
+                <ol>
+                    <li>{{subject.subject_name}}</li>
+                </ol>
+                {% endfor %}
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% if not profile_complete %}
             <div class="complete_profile">
                 <a class="profile_link navbar_link complete_profile" href="/edit-profile">⚠ Complete Profile ⚠</a>
             </div>
-            {% else %}
-            <div class="role_info info">
-                {{ user.role }}
-            </div>
+            {% endif %}
             <div class="posts_info info">
                 <span>Posts:</span>
                 {% set num_posts = user.posts|length %}
                 <a href="/view" class="profile_link navbar_link" title="View latest post by user">{{ num_posts }} {% if num_posts == 1 %}post{% else %}posts{% endif %}</a>
             </div>
-            {% endif %}
             <div class="auth info">
                 <a href="/logout" class="profile_link navbar_link">Logout</a>
             </div>
