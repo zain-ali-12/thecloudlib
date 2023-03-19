@@ -49,6 +49,8 @@ def signup():
             flash("Username already taken", category="error")
         else:
             new_user = User(email=email, username=username, password=generate_password_hash(password, method='sha256'))
+            new_user.subjects = []
+            print(new_user.subjects)
             db.session.add(new_user)
             db.session.commit()
             flash("User created!")
@@ -63,12 +65,19 @@ def edit_profile():
     if request.method == 'GET':
         return render_template('edit_profile.html', user=current_user, subjects=Subject.query.all(), qualifications=Qualification.query.all())
     else:
-        fname = request.form['fname']
-        lname = request.form['lname']
-        role = request.form['role']
-        qualification = request.form['qualification']
-        subjects = request.form.getlist(['subject[]'])
-        print(request.form.keys(), "  subject: ", request.form['subject[]'])
+        keys_list = list(request.form.keys())
+        try:
+            keys_list.remove('qualification')
+            keys_list.remove('subjects')
+        except Exception as e:
+            pass
+        for key in keys_list:
+            setattr(current_user, key, request.form[key])
+        if request.form.getlist('subjects') != [""]:
+            for subject in request.form.getlist('subjects'):
+                subject_obj = Subject.query.filter_by(id=subject).first()
+                current_user.subjects.append(subject_obj)
+        db.session.commit()
         return redirect(url_for("views.dashboard"))
 
 
