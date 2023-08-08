@@ -29,3 +29,10 @@ To run the server in debug mode add the `--debug` flag when running the python p
 
 eg.
 `python app.py --debug`
+
+## Images
+
+![alt text](https://i.ibb.co/zxCvwZs/192-168-0-111-edit-profile-1.png))
+![alt text](https://i.ibb.co/f2LhdZh/192-168-0-111-upload.png)
+![alt text](https://i.ibb.co/vx2v8kX/192-168-0-111-view-1.png)
+![alt text](https://i.ibb.co/gFXmm99/192-168-0-111-view.png)
